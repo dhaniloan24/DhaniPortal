@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#55b9ef">
+  <meta name="description" content="Dhani Portal online loan application and application status tracking.">
+  <title>Dhani Portal | Loan Application</title>
+  <link rel="icon" href="/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+<header class="site-header">
+  <a class="brand" href="/" aria-label="Dhani Portal home">
+    <img src="/logo.svg" alt="" class="brand-mark">
+    <span><strong>Dhani Portal</strong><small>FINANCIAL SERVICES</small></span>
+  </a>
+  <nav><a href="#loans">Loan options</a><a href="#apply">Apply now</a><a href="#track">Track application</a><a class="admin-link" href="/admin.html">Admin</a></nav>
+</header>
+<main>
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="eyebrow">A simpler way to apply</span>
+      <h1>Your goals.<br><em>Your next step.</em></h1>
+      <p>Submit your loan application online and securely track its progress with your reference number.</p>
+      <div class="hero-actions"><a class="button primary" href="#apply">Apply for a loan <span>→</span></a><a class="text-link" href="#track">Already applied? Track status</a></div>
+      <div class="trust-line"><span>✓</span> Secure application portal <span>✓</span> Status updates by email</div>
+    </div>
+    <div class="hero-art" aria-hidden="true">
+      <div class="orb orb-one"></div><div class="orb orb-two"></div>
+      <div class="art-card"><span class="art-icon">₹</span><div><strong>Move forward</strong><small>One application at a time</small></div><span class="check">✓</span></div>
+      <div class="art-stat"><small>Application tracking</small><strong>Clear. Simple. Secure.</strong><div class="stat-line"><i></i></div></div>
+    </div>
+  </section>
+  <section id="loans" class="section">
+    <div class="section-heading"><span class="eyebrow">Explore your options</span><h2>Find a loan for your needs</h2><p>Choose the loan category that best fits your requirements.</p></div>
+    <div class="loan-grid">
+      <article class="loan-card"><div class="loan-icon">↗</div><h3>Personal Loan</h3><p>For eligible personal expenses and planned needs.</p><a href="#apply" data-loan="Personal Loan">Apply for personal loan →</a></article>
+      <article class="loan-card"><div class="loan-icon business">▦</div><h3>Business Loan</h3><p>For eligible business needs and working capital.</p><a href="#apply" data-loan="Business Loan">Apply for business loan →</a></article>
+      <article class="loan-card"><div class="loan-icon home">⌂</div><h3>Home Loan</h3><p>For eligible home purchase or housing needs.</p><a href="#apply" data-loan="Home Loan">Apply for home loan →</a></article>
+    </div>
+  </section>
+  <section id="apply" class="section form-section">
+    <div class="section-heading"><span class="eyebrow">Get started online</span><h2>Loan application</h2><p>Enter accurate information. Required fields are marked with an asterisk.</p></div>
+    <form id="application-form" class="panel" enctype="multipart/form-data">
+      <div class="form-grid">
+        <label>Full name *<input name="full_name" required maxlength="120" autocomplete="name" placeholder="As per your official document"></label>
+        <label>Mobile number *<input name="phone" required inputmode="numeric" pattern="[6-9][0-9]{9}" maxlength="10" autocomplete="tel" placeholder="10-digit mobile number"></label>
+        <label>Email address *<input name="email" type="email" required maxlength="254" autocomplete="email" placeholder="you@example.com"></label>
+        <label>Loan type *<select name="loan_type" required><option value="">Choose loan type</option><option>Personal Loan</option><option>Business Loan</option><option>Home Loan</option></select></label>
+        <label>Loan amount requested (₹) *<input name="loan_amount" type="number" min="1000" max="100000000" step="1000" required placeholder="e.g. 200000"></label>
+        <label>Tenure (months) *<input name="tenure_months" type="number" min="1" max="360" step="1" required placeholder="e.g. 24"></label>
+        <label class="full">Loan purpose *<textarea name="purpose" required maxlength="1000" rows="3" placeholder="Briefly describe your loan requirement"></textarea></label>
+        <label class="full">Current address *<textarea name="address" required maxlength="500" rows="2" autocomplete="street-address" placeholder="Enter your address"></textarea></label>
+      </div>
+      <div class="upload-area"><h3>Upload required files</h3><p>JPG, PNG, or PDF only. Maximum 5 MB per file.</p>
+        <div class="form-grid">
+          <label>Applicant photo *<input name="photo" type="file" accept=".jpg,.jpeg,.png,image/jpeg,image/png" required><small>JPG or PNG</small></label>
+          <label>Signature *<input name="signature" type="file" accept=".jpg,.jpeg,.png,image/jpeg,image/png" required><small>JPG or PNG</small></label>
+          <label class="full">Supporting document *<input name="document" type="file" accept=".jpg,.jpeg,.png,.pdf,image/jpeg,image/png,application/pdf" required><small>Upload only documents specifically required for your application. Do not upload unnecessary sensitive information.</small></label>
+        </div>
+      </div>
+      <label class="consent"><input type="checkbox" name="consent" required><span>I confirm the information provided is accurate, consent to its use for processing this application, and have read the privacy notice.</span></label>
+      <p class="privacy-note">Submitting an application is not a loan approval or a guarantee of disbursement. Do not pay any fee solely because of this form. Review the lender's official terms and privacy notice before submitting.</p>
+      <button class="button primary submit-button" type="submit">Submit application <span>→</span></button>
+      <div id="application-result" class="notice" role="status" aria-live="polite" hidden></div>
+    </form>
+  </section>
+  <section id="track" class="section track-section">
+    <div class="track-copy"><span class="eyebrow">Stay informed</span><h2>Track your application</h2><p>Use the reference number you received after submitting your application and the same registered mobile number.</p><div class="status-steps"><span>01 <b>Received</b></span><span>02 <b>Under review</b></span><span>03 <b>Decision update</b></span></div></div>
+    <form id="status-form" class="panel status-panel"><h3>Check application status</h3><label>Reference number *<input name="reference_no" required maxlength="24" placeholder="e.g. DP261022-ABC123"></label><label>Registered mobile number *<input name="phone" required inputmode="numeric" pattern="[6-9][0-9]{9}" maxlength="10" placeholder="10-digit mobile number"></label><button class="button primary" type="submit">Check status</button><div id="status-result" class="notice" role="status" aria-live="polite" hidden></div></form>
+  </section>
+</main>
+<footer><a class="brand footer-brand" href="/"><img src="/logo.svg" alt=""><span><strong>Dhani Portal</strong><small>FINANCIAL SERVICES</small></span></a><p>Applications are subject to verification, eligibility, and the lender's terms. This portal must be operated only by an authorized entity.</p><div><a href="/privacy.html">Privacy notice</a><a href="/admin.html">Admin access</a></div><small>© <span id="year"></span> Dhani Portal. All rights reserved.</small></footer>
+</body></html>
